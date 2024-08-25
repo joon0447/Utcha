@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "39636620296",
+    "project_id": "utcha-7d76e",
+    "storage_bucket": "utcha-7d76e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39636620296:android:5cf9dd087940453d8cedbd",
+        "android_client_info": {
+          "package_name": "com.example.utcha"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYUUK4HEnAk_TlQErk3qRcfqkF98rQBFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
