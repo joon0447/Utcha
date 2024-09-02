@@ -28,14 +28,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Utcha',
-        theme: ThemeData(
+      theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.white,
-            scrolledUnderElevation: 0,
+          backgroundColor: Colors.white,
+          scrolledUnderElevation: 0,
         ),
-        ),
-
+      ),
       home: MainHomeScreen(),
     );
   }
