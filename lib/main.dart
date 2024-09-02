@@ -1,17 +1,22 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:utcha/firebase_options.dart';
-import 'package:utcha/screens/mypage_main_screen/mypage_main_screen.dart';
-import 'package:utcha/screens/profile_setting_screen/profile_setting_screen.dart';
-import 'package:utcha/screens/user_screens/changePhone_screen.dart';
-import 'screens/user_screens/Login_screen.dart';
-import 'screens/user_screens/register_screen.dart'; // registerUi 파일
+import 'package:utcha/screens/user_screens/main_home_screen/main_home_screen_widget.dart';
+import 'package:utcha/screens/user_screens/notification_screen/notification_controller.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  // FirebaseMessaging Background Handler 설정
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+
+  // Notification 초기화
+  NotificationController().initializeNotification();
+
   runApp(const MyApp());
 }
 
@@ -21,10 +26,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Utcha',
-      theme: ThemeData(),
       debugShowCheckedModeBanner: false,
-      home: const MypageMainScreen(),
+      title: 'Utcha',
+        theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.white,
+            scrolledUnderElevation: 0,
+        ),
+        ),
+
+      home: MainHomeScreen(),
     );
   }
 }

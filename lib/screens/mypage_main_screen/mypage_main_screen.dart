@@ -10,6 +10,7 @@ import 'package:utcha/screens/join_post_screen/join_post_screen.dart';
 import 'package:utcha/screens/like_post_screen/like_post_screen.dart';
 import 'package:utcha/screens/money_account_info_screen/money_account_info.dart';
 import 'package:utcha/screens/mypage_main_screen/logout_widget.dart';
+import 'package:utcha/screens/mypage_main_screen/withdraw_widget.dart';
 import 'package:utcha/screens/profile_setting_screen/profile_change_widget.dart';
 import 'package:utcha/screens/profile_setting_screen/profile_setting_screen.dart';
 import 'package:utcha/screens/terms_of_use_screen/service_screen.dart';
@@ -98,13 +99,13 @@ class _MypageMainScreenState extends State<MypageMainScreen> {
                                   ),
                                   IconButton(
                                       onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const ProfileSettingScreen(),
-                                            ),
-                                          );
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const ProfileSettingScreen(),
+                                          ),
+                                        );
                                       },
                                       icon: const Icon(
                                           Icons.arrow_forward_ios_sharp))
@@ -206,37 +207,62 @@ class _MypageMainScreenState extends State<MypageMainScreen> {
                               const Title(text: "개인 정보"),
                               GestureDetector(
                                   onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const AccountInfoScreen()),
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const AccountInfoScreen()),
                                     );
                                   },
                                   child: const Menu(text: "계정 정보")),
                               GestureDetector(
-                                onTap: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MoneyAccountInfo()),);
-                                },
-                                child: const Menu(text: "계좌 관리")),
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const MoneyAccountInfo()),
+                                    );
+                                  },
+                                  child: const Menu(text: "계좌 관리")),
                               GestureDetector(
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const AdjustmentScreen()));
-                                },
-                                child: const Menu(text: "정산 관리")),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const AdjustmentScreen()));
+                                  },
+                                  child: const Menu(text: "정산 관리")),
                               GestureDetector(
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const AddressSettingScreen()));
-                                },
-                                child: const Menu(text: "주소 설정")),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const AddressSettingScreen()));
+                                  },
+                                  child: const Menu(text: "주소 설정")),
                               const Title(text: "알림 설정"),
                               GestureDetector(
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const AlarmSettingScreen()));
-                                },
-                                child: const Menu(text: "알림 수신 설정")),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const AlarmSettingScreen()));
+                                  },
+                                  child: const Menu(text: "알림 수신 설정")),
                               const Title(text: "기타"),
                               GestureDetector(
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const ServiceScreen()));
-                                },
-                                child: const Menu(text: "서비스 이용 약관")),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const ServiceScreen()));
+                                  },
+                                  child: const Menu(text: "서비스 이용 약관")),
                               Container(
                                 decoration: BoxDecoration(
                                   border: Border(
@@ -276,18 +302,16 @@ class _MypageMainScreenState extends State<MypageMainScreen> {
                                   ],
                                 ),
                               ),
-                              
-
                               GestureDetector(
-                                onTap: (){
-                                  logOutDialog(context);
-                                },
-                                child: const Menu2(text: "로그아웃")),
+                                  onTap: () {
+                                    logOutDialog(context);
+                                  },
+                                  child: const Menu2(text: "로그아웃")),
                               GestureDetector(
-                                onTap: () {
-                                  print("dd");
-                                },
-                                child: const Menu2(text: "서비스 탈퇴")),
+                                  onTap: () {
+                                    withdrawDiaglog(context);
+                                  },
+                                  child: const Menu2(text: "서비스 탈퇴")),
                               const Title(text: "읏차 고객센터"),
                               const Padding(
                                 padding: EdgeInsets.only(top: 20),
@@ -417,36 +441,33 @@ class Menu2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(
-              color: Colors.grey.withOpacity(0.3),
-            ),
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: Colors.grey.withOpacity(0.3),
           ),
         ),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  text,
-                  style: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.w600),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-          ],
-        ),
+      ),
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                text,
+                style:
+                    const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+        ],
       ),
     );
   }
